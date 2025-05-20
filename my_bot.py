@@ -40,9 +40,9 @@ async def command_start_handler(message: Message) -> None:
 #         await message.send_copy(chat_id=message.chat.id)
 
 
-# @dp.message(F.photo)
-# async def detect_photo(message: Message):
-#     await message.answer("Siz rasm yubordingiz!")
+@dp.message(F.sticker)
+async def detect_photo(message: Message):
+    await message.answer("Siz sticker yubordingiz!")
 
 # @dp.message(F.text.regxp(r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'))
 # async def detect_emoji(message: Message):
