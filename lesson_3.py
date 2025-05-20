@@ -2,7 +2,6 @@ import asyncio
 import logging
 import json
 import tabulate
-from collections import defaultdict
 
 import psycopg2
 import sys
@@ -18,8 +17,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, \
-    InlineKeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from aiogram.types import Message
 from dotenv import load_dotenv
 
@@ -64,7 +62,7 @@ async def send_question(message, state):
     data = await state.get_data()
     step = data.get('step')
     corrects = int(data.get('corrects', 0))
-    
+
 
 
     curr.execute("""SELECT quiz, options
@@ -98,19 +96,6 @@ async def send_question(message, state):
     options = json.loads(options) if isinstance(options, str) else options
 
     await message.answer(quiz, reply_markup=make_keyboards(options))
-
-
-
-
-
-
-# keyboard = [
-#     [
-#         KeyboardButton(text="Share my contact", request_contact=True)
-#     ]
-# ]
-#
-# kb_markup = ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 
 @dp.message(CommandStart())
