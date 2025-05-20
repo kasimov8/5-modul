@@ -98,6 +98,15 @@ async def send_question(message, state):
     await message.answer(quiz, reply_markup=make_keyboards(options))
 
 
+keyboard = [
+    [
+        KeyboardButton(text="Share my contact", request_contact=True)
+    ]
+]
+
+kb_markup = ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
+
+
 @dp.message(CommandStart())
 async def command_start_handler(message: Message):
     curr.execute("""SELECT chat_id
@@ -131,7 +140,7 @@ async def get_full_name(message: Message, state: FSMContext):
     elif a > 1:
         await message.answer(f"To'liq ismingizda probellar soni ortib ketti.")
     else:
-        await message.answer("📲 Telefon raqamingizni kiriting.", reply_markup=make_keyboards(["Share my contact"], 1))
+        await message.answer("📲 Telefon raqamingizni kiriting.", reply_markup=kb_markup)
         await state.set_state(RegisterState.phone)
 
 
