@@ -21,6 +21,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemo
 from aiogram.types import Message
 from dotenv import load_dotenv
 
+
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 
@@ -35,6 +36,7 @@ conn = psycopg2.connect(
 )
 
 curr = conn.cursor()
+
 GMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@gmail\.com$'
 
 
@@ -250,6 +252,11 @@ async def show_statistics(message: Message):
     table = tabulate.tabulate(rows, headers=["Foydalanuvchi", "To'g'ri javoblar"], tablefmt="pretty")
 
     await message.answer(f"```\n{table}\n```", parse_mode="Markdown")
+
+@dp.message()
+async def lyuboy_message(message: Message):
+    await message.answer(f"O'yinni boshlash uchun /play tugmasini bosing.")
+
 
 
 async def main():
