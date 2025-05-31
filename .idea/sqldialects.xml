@@ -2,5 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/lesson_3.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/multilanguage_bot/utils/db/postgres_db.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/paginate_bot/paginate.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/register_with_orm/sqlalchemy_orm.py" dialect="GenericSQL" />
   </component>
 </project>
