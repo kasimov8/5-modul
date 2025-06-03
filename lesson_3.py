@@ -28,11 +28,11 @@ TOKEN = getenv("BOT_TOKEN")
 dp = Dispatcher(storage=MemoryStorage())
 
 conn = psycopg2.connect(
-    dbname=getenv("DB_NAME"),
-    user=getenv("DB_USER"),
-    password=getenv("DB_PASSWORD"),
-    host=getenv("DB_HOST"),
-    port=getenv("DB_PORT")
+    dbname=getenv("PSQL_DB_NAME"),
+    user=getenv("PSQL_DB_USER"),
+    password=getenv("PSQL_DB_PASSWORD"),
+    host=getenv("PSQL_DB_HOST"),
+    port=getenv("PSQL_DB_PORT")
 )
 
 curr = conn.cursor()
