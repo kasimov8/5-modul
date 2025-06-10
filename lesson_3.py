@@ -10,7 +10,6 @@ from os import getenv
 
 
 from aiogram import Bot, Dispatcher, html, F
-from aiogram.client import bot
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart, Command
