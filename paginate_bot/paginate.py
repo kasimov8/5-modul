@@ -33,7 +33,6 @@ curr = conn.cursor()
 class PageCallbackData(CallbackData, prefix='page'):
     action: str
     page: int
-    category: Optional[str] = field(default=None)
 
 
 def page_keyboards(page: int = -1):
@@ -114,15 +113,15 @@ async def callbacks_data(call: CallbackQuery, callback_data: PageCallbackData):
     # await call.message.edit_text(text=f"{smiles[page]}\n{page} - sahifa",
     #                              reply_markup=page_keyboards(page))
 
-    await call.message.edit_text(text=f"Kategoriya tanlang:", reply_markup=page_keyboards(page))
-
-    if callback_data.category == "Matematika":
-        curr.execute("SELECT quiz FROM examines WHERE category_name='Matematika'")
-        rows = curr.fetchall()
-        datas = [row[0] for row in rows]
-
-        for data in datas:
-            await call.message.edit_text(text=f"{data}", reply_markup=page_keyboards(page))
+    # await call.message.edit_text(text=f"Kategoriya tanlang:", reply_markup=page_keyboards(page))
+    #
+    # if callback_data.category == "Matematika":
+    #     curr.execute("SELECT quiz FROM examines WHERE category_name='Matematika'")
+    #     rows = curr.fetchall()
+    #     datas = [row[0] for row in rows]
+    #
+    #     for data in datas:
+    #         await call.message.edit_text(text=f"{data}", reply_markup=page_keyboards(page))
 
 
 

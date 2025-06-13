@@ -248,7 +248,7 @@ async def show_statistics(message: Message):
         await message.answer("Statistika hali mavjud emas.")
         return
 
-    table = tabulate.tabulate(rows, headers=["Foydalanuvchi", "To'g'ri javoblar"], tablefmt="pretty")
+    table = tabulate.tabulate(rows, headers=["Foydalanuvchi", "To'g'ri javoblar"], tablefmt="simple_grid")
 
     await message.answer(f"```\n{table}\n```", parse_mode="Markdown")
 
